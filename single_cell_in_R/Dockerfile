@@ -2,15 +2,11 @@
 ## Installed tools: Seurat, Monocle3, scater, scImpute, velocyto, scanpy, sleepwalk, liger, RCA, scBio, SCENIC, singleCellHaystack, scmap, scran, slingshot
 FROM ubuntu:bionic
 
-LABEL maintainer ""
+LABEL maintainer="weijie"
 
 USER root
-ENV LANG=C.UTF-8
-ENV TZ=UTC
-ARG R_VERSION=4.0.2
-ARG OS_IDENTIFIER=ubuntu-1804
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-transport-https \
     curl \
     fontconfig \
@@ -54,9 +50,22 @@ RUN pip3 install umap-learn
 RUN git clone --branch v1.1.0 https://github.com/KlugerLab/FIt-SNE.git
 RUN g++ -std=c++11 -O3 FIt-SNE/src/sptree.cpp FIt-SNE/src/tsne.cpp FIt-SNE/src/nbodyfft.cpp -o bin/fast_tsne -pthread -lfftw3 -lm
 
+## Configure default locale, see https://github.com/rocker-org/rocker/issues/19
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+	&& locale-gen en_US.utf8 \
+	&& /usr/sbin/update-locale LANG=en_US.UTF-8
+
+ENV LANG=C.UTF-8
+ENV TZ=UTC
+ARG R_VERSION=4.0.2
+ARG OS_IDENTIFIER=ubuntu-1804
+
+## This was not needed before but we need it now
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN wget https://cdn.rstudio.com/r/${OS_IDENTIFIER}/pkgs/r-${R_VERSION}_1_amd64.deb \
     && apt-get update -qq 
-    && DEBIAN_FRONTEND=noninteractive apt-get install -f -y ./r-${R_VERSION}_1_amd64.deb \
+    && apt-get install -f -y ./r-${R_VERSION}_1_amd64.deb \
     && ln -s /opt/R/${R_VERSION}/bin/R /usr/bin/R \
     && ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/bin/Rscript \
     && ln -s /opt/R/${R_VERSION}/lib/R /usr/lib/R \

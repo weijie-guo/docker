@@ -1,3 +1,4 @@
+## basic ubuntu 18 container with R4.02
 FROM ubuntu:18.04
 
 LABEL maintainer="weijie"

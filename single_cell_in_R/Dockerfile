@@ -9,7 +9,7 @@ RUN wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | \
     && mv ~/.TinyTeX /opt/TinyTeX \
     && /opt/TinyTeX/bin/*/tlmgr path add
     
-RUN mkdir -p /opt/pandoc 
+RUN mkdir -p /opt/pandoc \
     && wget -O /opt/pandoc/pandoc.gz https://files.r-hub.io/pandoc/linux-64/pandoc.gz \
     && gzip -d /opt/pandoc/pandoc.gz \
     && chmod +x /opt/pandoc/pandoc \

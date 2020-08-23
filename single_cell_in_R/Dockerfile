@@ -4,6 +4,12 @@ FROM weijie007/ubuntu18
 
 LABEL maintainer="weijie"
 
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    libgdal-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | \
     sh -s - --admin --no-path \
     && mv ~/.TinyTeX /opt/TinyTeX \

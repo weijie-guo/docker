@@ -39,3 +39,7 @@ RUN R --slave --no-restore --no-save -e "BiocManager::install(c('multtest', 'edg
     && R --slave --no-restore --no-save -e "BiocManager::install(c('BiocGenerics', 'DelayedArray', 'DelayedMatrixStats', 'batchelor'))" \
     && R --slave --no-restore --no-save -e "devtools::install_github('cole-trapnell-lab/leidenbase')" \
     && R --slave --no-restore --no-save -e "devtools::install_github('cole-trapnell-lab/monocle3')"
+RUN R --slave --no-restore --no-save -e "install.packages('remotes')"
+RUN R --slave --no-restore --no-save -e "remotes::install_github('satijalab/seurat-wrappers')"
+
+    

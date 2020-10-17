@@ -1,4 +1,4 @@
-## basic ubuntu 18 container with R4.03
+## basic ubuntu 20 container with R4.03
 FROM ubuntu:20.04
 
 LABEL maintainer="weijie"

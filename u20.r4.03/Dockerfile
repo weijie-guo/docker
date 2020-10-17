@@ -51,8 +51,8 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 
 # ENV LANG=C.UTF-8
 # ENV TZ=UTC
-ARG R_VERSION=4.0.2
-ARG OS_IDENTIFIER=ubuntu-1804
+ARG R_VERSION=4.0.3
+ARG OS_IDENTIFIER=ubuntu-2004
 
 RUN wget https://cdn.rstudio.com/r/${OS_IDENTIFIER}/pkgs/r-${R_VERSION}_1_amd64.deb \
     && apt-get update -qq \

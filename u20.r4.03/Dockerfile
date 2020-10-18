@@ -32,6 +32,7 @@ RUN apt-get update \
     perl \
     sudo \
     tzdata \
+    xdg-utils \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

@@ -28,7 +28,7 @@ RUN mkdir -p /opt/pandoc \
 ## install umap-learn
 RUN conda install -c conda-forge umap-learn -y
 
-RUN git clone --branch v1.1.0 https://github.com/KlugerLab/FIt-SNE.git
+RUN git clone https://github.com/KlugerLab/FIt-SNE.git
 RUN g++ -std=c++11 -O3 FIt-SNE/src/sptree.cpp FIt-SNE/src/tsne.cpp FIt-SNE/src/nbodyfft.cpp -o bin/fast_tsne -pthread -lfftw3 -lm
 ## install R packages
 RUN R --slave --no-restore --no-save \

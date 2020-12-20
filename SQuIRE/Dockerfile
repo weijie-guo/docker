@@ -9,6 +9,6 @@ RUN conda create --name squire \
     bioconductor-vsn bioconductor-biocparallel=1.12.0 r-ggrepel star=2.5.3a \
     bedtools=2.25.0 samtools=1.1 stringtie=1.3.3 igvtools=2.3.93 ucsc-genepredtobed \
     ucsc-gtftogenepred ucsc-genepredtogtf ucsc-bedgraphtobigwig r-hexbin -y
-RUN source activate squire
+RUN conda activate squire
 
 	

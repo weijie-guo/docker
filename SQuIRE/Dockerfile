@@ -1,7 +1,7 @@
 ## SQuIRE
 ## Software for Quantifying Interspersed Repeat Expression
 ## https://github.com/wyang17/SQuIRE
-FROM dceoy/bioconda
+FROM weijie007/u20.conda
 LABEL maintainer="weijie"
 RUN conda create --name squire \
     --override-channels -c iuc -c bioconda -c conda-forge -c defaults -c r \
